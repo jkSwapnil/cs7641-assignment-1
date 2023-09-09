@@ -257,7 +257,7 @@ class DataSplit:
 if __name__ == "__main__":
 
     # Testing code
-    print("Testing the dataset implementation:\n====================================")
+    print("\nTesting the dataset implementation:\n====================================")
 
     # Rice (Cammeo and Osmancik) dataset
     data = RiceData()
