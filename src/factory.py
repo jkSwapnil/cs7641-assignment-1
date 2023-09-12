@@ -7,11 +7,14 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
 from datasets import RiceData, BankData
+from models import Model
 
 def get_data(dtype):
     """Dataset factory method
     Parameters:
         dtype: "rice" or "bank" (string)
+    Returns:
+        Data object
     """
     if (dtype == "rice"):
         return RiceData()
@@ -25,17 +28,19 @@ def get_model(alg_name, **hparams):
     Parameters:
         alg_name: Name of the algorithm (string)
         hparams: Hyper-parameters (dict) (Optional)
+    Returns:
+        Model object
     """
     if alg_name == "decision_tree":
-        return DecisionTreeClassifier(**hparams)
+        return Model(DecisionTreeClassifier(**hparams))
     elif alg_name == "neural_network":
-        return MLPClassifier(**hparams)
+        return Model(MLPClassifier(**hparams))
     elif alg_name == "boosting":
-        return GradientBoostingClassifier(**hparams)
+        return Model(GradientBoostingClassifier(**hparams))
     elif alg_name == "svm":
-        return SVC(**hparams)
+        return Model(SVC(**hparams))
     elif alg_name == "knn":
-        return KNeighborsClassifier(**hparams)
+        return Model(KNeighborsClassifier(**hparams))
     else:
         raise Exception(f"Algorithm '{alg_name}' is not supported !")
 
