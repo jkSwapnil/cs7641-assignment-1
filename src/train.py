@@ -31,6 +31,7 @@ class Trainer:
         Returns:
             Combined training metrices (Dict)
                 {
+                    "model_type_w_hparams": string
                     "train_sizes": np.ndarray[K-folds, train-fracs],
                     "train_losses": np.ndarray[K-folds, train-fracs],
                     "val_losses": np.ndarray[K-folds, train-fracs],
@@ -38,7 +39,9 @@ class Trainer:
                 }
         """
         # Define and create model paths
-        model_dir = os.path.join("..", "models", model_type)
+        # Update the model type with hyperparameters
+        model_type_w_hparams = model_type + "_" + "_".join([f"{k}_{v}" for k, v in hparams.items()])
+        model_dir = os.path.join("..", "models", model_type_w_hparams)
         if not os.path.isdir(model_dir):
             os.mkdir(model_dir)
         # All the combined metrics listed below is saved as np.ndarray
@@ -87,6 +90,7 @@ class Trainer:
             train_times.append(cv_train_time)
         # Convert the combined metrices to numpy array and save
         combined_train_metrics = {}
+        combined_train_metrics["model_type_w_hparams"] = model_type_w_hparams
         combined_train_metrics["train_sizes"] = np.array(train_sizes)
         combined_train_metrics["train_losses"] = np.array(train_losses)
         combined_train_metrics["val_losses"] = np.array(val_losses)
