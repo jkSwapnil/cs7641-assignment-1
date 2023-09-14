@@ -2,13 +2,14 @@
 
 import os
 import pickle as pkl
+import shutil
 import time
 
 import numpy as np
 from tqdm import tqdm
 
 from datasets import DataSplit
-from factory import get_model
+from factory import get_data, get_model
 from sklearn.metrics import log_loss
 
 
@@ -20,14 +21,14 @@ class Trainer:
     Stratified K-Fold cross validation is used
     """
 
-    def __call__(self, data, k, train_fracs, model_type, **hparams):
+    def __call__(self, data_name, k, train_fracs, model_type, **hparams):
         """Object call to implement training.
         Paramters:
-            data: Data to train on (Data)
+            data_name: Name of the dataset "rice" or "bank" (string)
             k: Number of splits in k-fold (int)
             train_fracs: Utilization of the training data (np.ndarray)
             model_type Type of model to train (string)
-            **hparams: Hyperparameters of the model (dict) (Optional)
+            **hparams: Hyperparameters of the model (dict) (optional)
         Returns:
             Combined training metrices (Dict)
                 {
@@ -40,10 +41,11 @@ class Trainer:
         """
         # Define and create model paths
         # Update the model type with hyperparameters
-        model_type_w_hparams = model_type + "_" + "_".join([f"{k}_{v}" for k, v in hparams.items()])
+        model_type_w_hparams = model_type + "-" + data_name + "-" + "_".join([f"{k}_{v}" for k, v in hparams.items()])
         model_dir = os.path.join("..", "models", model_type_w_hparams)
-        if not os.path.isdir(model_dir):
-            os.mkdir(model_dir)
+        if os.path.isdir(model_dir):
+            shutil.rmtree(model_dir)
+        os.mkdir(model_dir)
         # All the combined metrics listed below is saved as np.ndarray
         # Shape = [No. of folds, No. of train-fracs]
         train_sizes = []  # List of train sizes in all cross-validations
@@ -52,7 +54,8 @@ class Trainer:
         train_times = []  # List of train times in all cross-validations
         # Run training and validation on each cross-validation split
         print(f"- Number of folds in cross validation: {k}")
-        for kid, (x_train, x_val, y_train, y_val) in enumerate(DataSplit(k=5)(data=data)):
+        data = get_data(dtype=data_name)
+        for kid, (x_train, x_val, y_train, y_val) in enumerate(DataSplit(k=k)(data=data)):
             print(f"- Fold: {kid}")
             cv_train_size = []  # List of train size for this cross-validation split
             cv_train_loss = []  # List of train loss for this cross-validation split
@@ -105,11 +108,7 @@ class Trainer:
 if __name__ == "__main__":
 
     # Test code
-    from factory import get_data, get_model
-
     print("\nTesting trainer:\n================")
-    data = get_data(dtype="rice")  # Get data from the factory
-    trainer = Trainer()  # Trainer object
-    out = trainer(data=data, k=5, train_fracs=np.linspace(0.1, 1, 90), model_type="svm", probability=True)
+    out = Trainer()(data_name="rice", k=5, train_fracs=np.linspace(0.1, 1, 20), model_type="svm", probability=True)
     # print(out)
     print("- done\n")
