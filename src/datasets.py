@@ -1,5 +1,6 @@
 # This module defines interfaces and classes implementing the datasets
 
+from imblearn.over_sampling import SMOTE
 import numpy as np
 import pandas as pd
 from scipy.io import arff
@@ -195,6 +196,8 @@ class BankData(Data):
         self.x_train, self.x_test, self.y_train, self.y_test = train_test_split(
             x, y, test_size=0.2, random_state=1693854383, shuffle=True, stratify=y
             )
+        # Over sample the minorty class
+        self.x_train, self.y_train = SMOTE(random_state=1693854383).fit_resample(self.x_train, self.y_train)
         self.size_train = len(self.x_train)
         self.size_test = len(self.x_test)
 
