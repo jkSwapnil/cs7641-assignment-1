@@ -45,6 +45,7 @@ class Tester:
         kfold_value = str(argmin_row_idx)
         tfrac_size_value = train_metrics["train_sizes"][argmin_row_idx, argmin_col_idx]
         model_pkl_file = os.path.join(model_base_dir, f"kfold_{kfold_value}_tfrac_size_{tfrac_size_value}.pkl")
+        print(f"- Best model: K-Fold={kfold_value} Training-data-size={tfrac_size_value}")
 
         # Load the best model
         with open(model_pkl_file, "rb") as f:
@@ -70,6 +71,8 @@ class Tester:
         print(f"- F1 score: {f1:.2f}")
         print(f"- ROC AUC: {roc_auc:.2f}")
         # Saved the evaluted metrics
+        test_results["kfold_value"] = kfold_value
+        test_results["tfrac_size_value"] = tfrac_size_value
         test_results["accuracy"] = percentage_accuracy
         test_results["precision"] = precision
         test_results["recall"] = recall
