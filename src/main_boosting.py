@@ -36,7 +36,7 @@ if execute_rice:
         k=5,
         train_fracs=np.linspace(0.1, 1, 30),
         model_type="boosting",
-        n_estimators = 50,
+        n_estimators=50,
         ccp_alpha=0.005,
         random_state=1693854383,
         )
