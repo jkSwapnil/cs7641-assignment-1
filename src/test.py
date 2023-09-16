@@ -71,8 +71,8 @@ class Tester:
         print(f"- F1 score: {f1:.2f}")
         print(f"- ROC AUC: {roc_auc:.2f}")
         # Saved the evaluted metrics
-        test_results["kfold_value"] = kfold_value
-        test_results["tfrac_size_value"] = tfrac_size_value
+        test_results["best_kfold_value"] = int(kfold_value)
+        test_results["best_tfrac_size_value"] = int(tfrac_size_value)
         test_results["accuracy"] = percentage_accuracy
         test_results["precision"] = precision
         test_results["recall"] = recall
@@ -80,7 +80,7 @@ class Tester:
         test_results["roc_auc"] = roc_auc
         test_results_filepath = os.path.join(model_base_dir, "test_results.json")
         with open(test_results_filepath, "w") as f:
-            json.dump(test_results_filepath, f)
+            json.dump(test_results, f)
         print(f"- Test results saved at: {test_results_filepath}")
 
         plots_base_dir =  os.path.join("..", "plots", train_metrics["model_type_w_hparams"])
