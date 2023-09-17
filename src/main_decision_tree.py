@@ -138,13 +138,13 @@ if execute_bank:
     print("Testing")
     print("-------")
     Tester()(data_name="bank", train_metrics=train_metrics)
-    # Decision tree classifier: min_samples_leaf = 1, ccp_alpha = 0.00005
+    # Decision tree classifier: min_samples_leaf = 20, ccp_alpha = 0.005
     print("\nDataset: Bank | Algorithm: Decision Tree")
     print("========================================")
     print("Hyperparameters")
     print("---------------")
-    print("- min_samples_leaf = 1")
-    print("- ccp_alpha = 0.00005")
+    print("- min_samples_leaf = 20")
+    print("- ccp_alpha = 0.005")
     print("Training")
     print("--------")
     train_metrics = Trainer()(
@@ -152,30 +152,8 @@ if execute_bank:
         k=5,
         train_fracs=np.linspace(0.1, 1, 30),
         model_type="decision_tree",
-        min_samples_leaf=1,
-        ccp_alpha=0.00005,
-        random_state=1693854383,
-        )
-    PlotTrainMetrices()(train_metrics=train_metrics)
-    print("Testing")
-    print("-------")
-    Tester()(data_name="bank", train_metrics=train_metrics)
-    # Decision tree classifier: min_samples_leaf = 10, ccp_alpha = 0.0001
-    print("\nDataset: Bank | Algorithm: Decision Tree")
-    print("========================================")
-    print("Hyperparameters")
-    print("---------------")
-    print("- min_samples_leaf = 10")
-    print("- ccp_alpha = 0.0001")
-    print("Training")
-    print("--------")
-    train_metrics = Trainer()(
-        data_name="bank",
-        k=5,
-        train_fracs=np.linspace(0.1, 1, 30),
-        model_type="decision_tree",
-        min_samples_leaf=10,
-        ccp_alpha=0.0001,
+        min_samples_leaf=20,
+        ccp_alpha=0.005,
         random_state=1693854383,
         )
     PlotTrainMetrices()(train_metrics=train_metrics)
