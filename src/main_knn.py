@@ -64,49 +64,7 @@ if execute_rice:
     print("Testing")
     print("-------")
     Tester()(data_name="rice", train_metrics=train_metrics)
-    # KNN classifier: n_neighbors = 200, p = 2
-    print("\nDataset: Rice | Algorithm: KNN")
-    print("================================")
-    print("Hyperparameters")
-    print("---------------")
-    print("- n_neighbors = 200")
-    print("- p = 2")
-    print("Training")
-    print("--------")
-    train_metrics = Trainer()(
-        data_name="rice",
-        k=5,
-        train_fracs=np.linspace(0.1, 1, 30),
-        model_type="knn",
-        n_neighbors=200,
-        p=2
-        )
-    PlotTrainMetrices()(train_metrics=train_metrics)
-    print("Testing")
-    print("-------")
-    Tester()(data_name="rice", train_metrics=train_metrics)
-    # KNN classifier: n_neighbors = 200, p = 1
-    print("\nDataset: Rice | Algorithm: KNN")
-    print("================================")
-    print("Hyperparameters")
-    print("---------------")
-    print("- n_neighbors = 200")
-    print("- p = 1")
-    print("Training")
-    print("--------")
-    train_metrics = Trainer()(
-        data_name="rice",
-        k=5,
-        train_fracs=np.linspace(0.1, 1, 30),
-        model_type="knn",
-        n_neighbors=200,
-        p=1
-        )
-    PlotTrainMetrices()(train_metrics=train_metrics)
-    print("Testing")
-    print("-------")
-    Tester()(data_name="rice", train_metrics=train_metrics)
-    print()
+
 
 if execute_bank:
     # Bank Dataset
@@ -148,48 +106,6 @@ if execute_bank:
         model_type="knn",
         n_neighbors=120,
         p=2
-        )
-    PlotTrainMetrices()(train_metrics=train_metrics)
-    print("Testing")
-    print("-------")
-    Tester()(data_name="bank", train_metrics=train_metrics)
-    # KNN classifier: n_neighbors = 200, p = 2
-    print("\nDataset: Bank | Algorithm: KNN")
-    print("================================")
-    print("Hyperparameters")
-    print("---------------")
-    print("- n_neighbors = 200")
-    print("- p = 2")
-    print("Training")
-    print("--------")
-    train_metrics = Trainer()(
-        data_name="bank",
-        k=5,
-        train_fracs=np.linspace(0.1, 1, 30),
-        model_type="knn",
-        n_neighbors=200,
-        p=2
-        )
-    PlotTrainMetrices()(train_metrics=train_metrics)
-    print("Testing")
-    print("-------")
-    Tester()(data_name="bank", train_metrics=train_metrics)
-    # KNN classifier: n_neighbors = 200, p = 1
-    print("\nDataset: Bank | Algorithm: KNN")
-    print("================================")
-    print("Hyperparameters")
-    print("---------------")
-    print("- n_neighbors = 200")
-    print("- p = 1")
-    print("Training")
-    print("--------")
-    train_metrics = Trainer()(
-        data_name="bank",
-        k=5,
-        train_fracs=np.linspace(0.1, 1, 30),
-        model_type="knn",
-        n_neighbors=200,
-        p=1
         )
     PlotTrainMetrices()(train_metrics=train_metrics)
     print("Testing")
