@@ -66,29 +66,6 @@ if execute_rice:
     print("Testing")
     print("-------")
     Tester()(data_name="rice", train_metrics=train_metrics)
-    # Boosting: kernel = "poly", degree = 3
-    print("\nDataset: Rice | Algorithm: SVM")
-    print("================================")
-    print("Hyperparameters")
-    print("---------------")
-    print("- kernel = 'poly'")
-    print("- degree = 3")
-    print("Training")
-    print("--------")
-    train_metrics = Trainer()(
-        data_name="rice",
-        k=5,
-        train_fracs=np.linspace(0.1, 1, 30),
-        model_type="svm",
-        kernel="poly",
-        degree=3,
-        probability=True,
-        random_state=1693854383
-        )
-    PlotTrainMetrices()(train_metrics=train_metrics)
-    print("Testing")
-    print("-------")
-    Tester()(data_name="rice", train_metrics=train_metrics)
 
 
 if execute_bank:
