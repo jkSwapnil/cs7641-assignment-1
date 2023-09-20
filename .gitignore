@@ -1,3 +1,7 @@
 # Specify the patterns of the filename to ignore
 **.DS_Store
 **__pycache__/
+models/*
+!.gitkeep
+plots/*
+!.gitkeep
