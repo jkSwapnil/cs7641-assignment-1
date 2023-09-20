@@ -2,7 +2,7 @@
 Assignment 1 of Machine Learning (CS7641).
 # CS7641 Assignment 1: Supervised Learning
 
-In this project, different machine learning algorithms are trained, validated, tested, and compared on two classifiction datasets
+In this project, different machine learning algorithms are trained, validated, tested, and compared on two classification datasets
 
 
 ## Project source code
@@ -45,7 +45,7 @@ pip install -r requirements.txt
 
 ## Execute training, validation, and testing
 
-The models and related plots are saved in [./models](./models/) and [./plots](./plots/) directories respectively. One can choose to download the pre-trained models and plots from [here](https://www.dropbox.com/scl/fi/7ief8k2gnvrw4muux19sg/cs7641-assignment-1.zip?rlkey=5sg361gdzcifulc2cqzyshu6m&dl=0). These models can also be trained and tested and the plots can be createe by executing the following commands.
+The models and related plots are saved in [./models](./models/) and [./plots](./plots/) directories respectively. One can choose to download the pre-trained models and plots from [here](https://www.dropbox.com/scl/fi/7ief8k2gnvrw4muux19sg/cs7641-assignment-1.zip?rlkey=5sg361gdzcifulc2cqzyshu6m&dl=0). These models can also be trained and tested and the plots can be created by executing the following commands.
 
 ### Decision Tree Classifier
 The decision tree classifier can be trained and tested by executing one of the following commands
