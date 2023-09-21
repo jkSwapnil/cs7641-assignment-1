@@ -37,7 +37,7 @@ The following python packages are needed for this project
 - matplotlib==3.7.3
 - tqdm==4.66.1
 
-After cloning the repo, these packages can be installed using the following command
+After cloning the repo, these packages can be installed using the following command (Assuming the current working directory is the cloned repo).
 ```bash
 pip install -r requirements.txt
 ```
@@ -45,7 +45,14 @@ pip install -r requirements.txt
 
 ## Execute training, validation, and testing
 
-The models and related plots are saved in [./models](./models/) and [./plots](./plots/) directories respectively. One can choose to download the pre-trained models and plots from [here](https://www.dropbox.com/scl/fi/7ief8k2gnvrw4muux19sg/cs7641-assignment-1.zip?rlkey=5sg361gdzcifulc2cqzyshu6m&dl=0). These models can also be trained and tested and the plots can be created by executing the following commands.
+The models and related plots are saved in [./models](./models/) and [./plots](./plots/) directories respectively. One can choose to download the pre-trained models and plots from [here](https://www.dropbox.com/scl/fi/7ief8k2gnvrw4muux19sg/cs7641-assignment-1.zip?rlkey=5sg361gdzcifulc2cqzyshu6m&dl=0). These models can also be trained and tested and the plots can be created by executing the following commands (Assuming the current working directory is the cloned repo).
+
+### Change directory to src
+First step is to cd into the [./src](./src/) folder before executing any command
+```bash
+# cd into src
+cd src
+```
 
 ### Decision Tree Classifier
 The decision tree classifier can be trained and tested by executing one of the following commands
