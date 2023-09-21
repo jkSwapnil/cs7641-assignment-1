@@ -1,5 +1,3 @@
-# cs7641-assignment-1
-Assignment 1 of Machine Learning (CS7641).
 # CS7641 Assignment 1: Supervised Learning
 
 In this project, different machine learning algorithms are trained, validated, tested, and compared on two classification datasets
@@ -16,6 +14,8 @@ Execute the following command to clone the source code:
 # for github.gatech.edu
 git clone https://github.gatech.edu/skumar691/cs7641-assignment-1.git
 ```
+
+**_NOTE_**: If one is unable to access [github.gatech.edu](https://github.gatech.edu/), the same source code is also exported to my personal github [here](https://github.com/jkSwapnil/cs7641-assignment-1). No credentials are needed to clone this one.
 
 
 ## Datasets
